@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Alura_Java.iml" filepath="$PROJECT_DIR$/.idea/Alura_Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Módulo/Segunda_atividade/Segunda_atividade.iml" filepath="$PROJECT_DIR$/Primeiro Módulo/Segunda_atividade/Segunda_atividade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Segundo Módulo/primeira_Atividade_2/primeira_Atividade_2.iml" filepath="$PROJECT_DIR$/Segundo Módulo/primeira_Atividade_2/primeira_Atividade_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Primeiro Módulo/primeiroProjeto/primeiroProjeto.iml" filepath="$PROJECT_DIR$/Primeiro Módulo/primeiroProjeto/primeiroProjeto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Segundo Módulo/segunda_Atividade_2/segunda_Atividade_2.iml" filepath="$PROJECT_DIR$/Segundo Módulo/segunda_Atividade_2/segunda_Atividade_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Segundo Módulo/terceira_Atividade_2/terceira_Atividade_2.iml" filepath="$PROJECT_DIR$/Segundo Módulo/terceira_Atividade_2/terceira_Atividade_2.iml" />
+    </modules>
+  </component>
+</project>

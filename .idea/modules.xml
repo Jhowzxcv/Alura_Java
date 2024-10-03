@@ -3,17 +3,18 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Alura_Java.iml" filepath="$PROJECT_DIR$/.idea/Alura_Java.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Primeiro Módulo/Atividade_1/Atividade_1.iml" filepath="$PROJECT_DIR$/Primeiro Módulo/Atividade_1/Atividade_1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Segundo Módulo/Atividade_1.2/Atividade_1.2.iml" filepath="$PROJECT_DIR$/Segundo Módulo/Atividade_1.2/Atividade_1.2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Terceiro Módulo/Atividade_1.3/Atividade_1.3.iml" filepath="$PROJECT_DIR$/Terceiro Módulo/Atividade_1.3/Atividade_1.3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Primeiro Módulo/Atividade_2/Atividade_2.iml" filepath="$PROJECT_DIR$/Primeiro Módulo/Atividade_2/Atividade_2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Segundo Módulo/Atividade_2.2/Atividade_2.2.iml" filepath="$PROJECT_DIR$/Segundo Módulo/Atividade_2.2/Atividade_2.2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Terceiro Módulo/Atividade_2.3/Atividade_2.3.iml" filepath="$PROJECT_DIR$/Terceiro Módulo/Atividade_2.3/Atividade_2.3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Segundo Módulo/Atividade_3.2/Atividade_3.2.iml" filepath="$PROJECT_DIR$/Segundo Módulo/Atividade_3.2/Atividade_3.2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Terceiro Módulo/Atividade_3.3/Atividade_3.3.iml" filepath="$PROJECT_DIR$/Terceiro Módulo/Atividade_3.3/Atividade_3.3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Terceiro Módulo/Atividade_4.3/Atividade_4.3.iml" filepath="$PROJECT_DIR$/Terceiro Módulo/Atividade_4.3/Atividade_4.3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Terceiro Módulo/Atividade_5.3/Atividade_5.3.iml" filepath="$PROJECT_DIR$/Terceiro Módulo/Atividade_5.3/Atividade_5.3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Terceiro Módulo/Atividade_6.3/Atividade_6.3.iml" filepath="$PROJECT_DIR$/Terceiro Módulo/Atividade_6.3/Atividade_6.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_1/Atividade_1/Atividade_1.iml" filepath="$PROJECT_DIR$/Módulo_1/Atividade_1/Atividade_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_2/Atividade_1.2/Atividade_1.2.iml" filepath="$PROJECT_DIR$/Módulo_2/Atividade_1.2/Atividade_1.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_3/Atividade_1.3/Atividade_1.3.iml" filepath="$PROJECT_DIR$/Módulo_3/Atividade_1.3/Atividade_1.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_4/Atividade_1.4/Atividade_1.4.iml" filepath="$PROJECT_DIR$/Módulo_4/Atividade_1.4/Atividade_1.4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_1/Atividade_2/Atividade_2.iml" filepath="$PROJECT_DIR$/Módulo_1/Atividade_2/Atividade_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_2/Atividade_2.2/Atividade_2.2.iml" filepath="$PROJECT_DIR$/Módulo_2/Atividade_2.2/Atividade_2.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_3/Atividade_2.3/Atividade_2.3.iml" filepath="$PROJECT_DIR$/Módulo_3/Atividade_2.3/Atividade_2.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_2/Atividade_3.2/Atividade_3.2.iml" filepath="$PROJECT_DIR$/Módulo_2/Atividade_3.2/Atividade_3.2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_3/Atividade_3.3/Atividade_3.3.iml" filepath="$PROJECT_DIR$/Módulo_3/Atividade_3.3/Atividade_3.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_3/Atividade_4.3/Atividade_4.3.iml" filepath="$PROJECT_DIR$/Módulo_3/Atividade_4.3/Atividade_4.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_3/Atividade_5.3/Atividade_5.3.iml" filepath="$PROJECT_DIR$/Módulo_3/Atividade_5.3/Atividade_5.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Módulo_3/Atividade_6.3/Atividade_6.3.iml" filepath="$PROJECT_DIR$/Módulo_3/Atividade_6.3/Atividade_6.3.iml" />
     </modules>
   </component>
 </project>

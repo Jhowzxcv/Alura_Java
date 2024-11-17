@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Parte_2/Módulo_1/Atividade_1.1.2/2914-java-screenmatch-listas-colecoes/2914-java-screenmatch-listas-colecoes.iml" filepath="$PROJECT_DIR$/Parte_2/Módulo_1/Atividade_1.1.2/2914-java-screenmatch-listas-colecoes/2914-java-screenmatch-listas-colecoes.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Alura_Java.iml" filepath="$PROJECT_DIR$/.idea/Alura_Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Parte_1/Módulo_1/Atividade_1/Atividade_1.iml" filepath="$PROJECT_DIR$/Parte_1/Módulo_1/Atividade_1/Atividade_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Parte_2/Módulo_1/Atividade_1.1.2/Atividade_1.1.2.iml" filepath="$PROJECT_DIR$/Parte_2/Módulo_1/Atividade_1.1.2/Atividade_1.1.2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Parte_1/Módulo_2/Atividade_1.2/Atividade_1.2.iml" filepath="$PROJECT_DIR$/Parte_1/Módulo_2/Atividade_1.2/Atividade_1.2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Parte_1/Módulo_3/Atividade_1.3/Atividade_1.3.iml" filepath="$PROJECT_DIR$/Parte_1/Módulo_3/Atividade_1.3/Atividade_1.3.iml" />
       <module fileurl="file://$PROJECT_DIR$/Parte_1/Módulo_4/Atividade_1.4/Atividade_1.4.iml" filepath="$PROJECT_DIR$/Parte_1/Módulo_4/Atividade_1.4/Atividade_1.4.iml" />
@@ -15,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/Parte_1/Módulo_3/Atividade_4.3/Atividade_4.3.iml" filepath="$PROJECT_DIR$/Parte_1/Módulo_3/Atividade_4.3/Atividade_4.3.iml" />
       <module fileurl="file://$PROJECT_DIR$/Parte_1/Módulo_3/Atividade_5.3/Atividade_5.3.iml" filepath="$PROJECT_DIR$/Parte_1/Módulo_3/Atividade_5.3/Atividade_5.3.iml" />
       <module fileurl="file://$PROJECT_DIR$/Parte_1/Módulo_3/Atividade_6.3/Atividade_6.3.iml" filepath="$PROJECT_DIR$/Parte_1/Módulo_3/Atividade_6.3/Atividade_6.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Parte_2/Módulo_1/Atividade_1.1.2/2914-java-screenmatch-listas-colecoes/teste/teste.iml" filepath="$PROJECT_DIR$/Parte_2/Módulo_1/Atividade_1.1.2/2914-java-screenmatch-listas-colecoes/teste/teste.iml" />
     </modules>
   </component>
 </project>

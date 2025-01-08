@@ -5,6 +5,10 @@ import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
+import br.com.alura.screenmatch.modelos.Pessoa;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
@@ -52,5 +56,41 @@ public class Principal {
         episodio.setSerie(lost);
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
+
+        var filmeDoPaulo = new Filme();
+        filmeDoPaulo.setDuracaoEmMinutos(200);
+        filmeDoPaulo.setNome("Dogville");
+        filmeDoPaulo.setAnoDeLancamento(2003);
+        filmeDoPaulo.avalia(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(filmeDoPaulo);
+        listaDeFilmes.add(meuFilme);
+        listaDeFilmes.add(outroFilme);
+        System.out.println("tamanho da lista " + listaDeFilmes.size());
+        System.out.println("Primeiro filme " + listaDeFilmes.get(0).getNome());
+        System.out.println(listaDeFilmes);
+        System.out.println("toString do filme " + listaDeFilmes.get(0).toString());
+
+        var paulo = new Pessoa();
+        paulo.setNome("Paulo");
+        paulo.setIdade(31);
+
+        var thaina = new Pessoa();
+        thaina.setNome("Thaina");
+        thaina.setIdade(16);
+
+        var jhonathan = new Pessoa();
+        jhonathan.setNome("Jhonathan");
+        jhonathan.setIdade(17);
+
+        ArrayList<Pessoa> listaDePessoas = new ArrayList<>();
+        listaDePessoas.add(paulo);
+        listaDePessoas.add(thaina);
+        listaDePessoas.add(jhonathan);
+        System.out.println("Tamanho da lista: " + listaDePessoas.size());
+        System.out.println("Primeira pessoa da lista: " + listaDePessoas.get(0).getNome());
+        System.out.println(listaDePessoas);
+
     }
 }

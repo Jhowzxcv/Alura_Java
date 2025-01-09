@@ -2,19 +2,14 @@
 
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
-import br.com.alura.screenmatch.modelos.Episodio;
-import br.com.alura.screenmatch.modelos.Filme;
-import br.com.alura.screenmatch.modelos.Serie;
-import br.com.alura.screenmatch.modelos.Pessoa;
+import br.com.alura.screenmatch.modelos.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme();
-        meuFilme.setNome("O poderoso chefão");
-        meuFilme.setAnoDeLancamento(1970);
+        Filme meuFilme = new Filme("O poderoso chefão", 1970);
         meuFilme.setDuracaoEmMinutos(180);
         System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos());
 
@@ -28,18 +23,14 @@ public class Principal {
         //meuFilme.totalDeAvaliacoes = 1;
         //System.out.println(meuFilme.pegaMedia());
 
-        Serie lost = new Serie();
-        lost.setNome("Lost");
-        lost.setAnoDeLancamento(2000);
+        Serie lost = new Serie("Lost", 2000);
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodiosPorTemporada(10);
         lost.setMinutosPorEpisodio(50);
         System.out.println("Duração para maratonar Lost: " + lost.getDuracaoEmMinutos());
 
-        Filme outroFilme = new Filme();
-        outroFilme.setNome("Avatar");
-        outroFilme.setAnoDeLancamento(2023);
+        Filme outroFilme = new Filme("Avatar", 2023);
         outroFilme.setDuracaoEmMinutos(200);
 
         CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
@@ -57,10 +48,8 @@ public class Principal {
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
 
-        var filmeDoPaulo = new Filme();
+        var filmeDoPaulo = new Filme("Dogville", 2003);
         filmeDoPaulo.setDuracaoEmMinutos(200);
-        filmeDoPaulo.setNome("Dogville");
-        filmeDoPaulo.setAnoDeLancamento(2003);
         filmeDoPaulo.avalia(10);
 
         ArrayList<Filme> listaDeFilmes = new ArrayList<>();
@@ -72,7 +61,9 @@ public class Principal {
         System.out.println(listaDeFilmes);
         System.out.println("toString do filme " + listaDeFilmes.get(0).toString());
 
-        var paulo = new Pessoa();
+
+
+       /* var paulo = new Pessoa();
         paulo.setNome("Paulo");
         paulo.setIdade(31);
 
@@ -90,7 +81,32 @@ public class Principal {
         listaDePessoas.add(jhonathan);
         System.out.println("Tamanho da lista: " + listaDePessoas.size());
         System.out.println("Primeira pessoa da lista: " + listaDePessoas.get(0).getNome());
-        System.out.println(listaDePessoas);
+        System.out.println(listaDePessoas); */
+
+        Produto detergente = new Produto("Detergente", 3.50, 30);
+        Produto sabaoEmPo = new Produto("Sabão em Pó", 12.00, 15);
+        Produto esponja = new Produto("Esponja", 2.00, 50);
+        Produto papelToalha = new Produto("Papel Toalha", 8.00, 20);
+        Produto alcool = new Produto("Álcool 70%", 10.50, 25);
+        ProdutoPerecivel leite = new ProdutoPerecivel("Leite", 3.50, 20, "15/02/2025");
+        ProdutoPerecivel queijo = new ProdutoPerecivel("Queijo", 15.00, 10, "10/01/2025");
+        ProdutoPerecivel iogurte = new ProdutoPerecivel("Iogurte", 4.99, 30, "20/03/2025");
+
+        ArrayList<Produto> listaDeProdutos = new ArrayList<>();
+        listaDeProdutos.add(detergente);
+        listaDeProdutos.add(sabaoEmPo);
+        listaDeProdutos.add(esponja);
+        listaDeProdutos.add(papelToalha);
+        listaDeProdutos.add(alcool);
+        listaDeProdutos.add(leite);
+        listaDeProdutos.add(queijo);
+        listaDeProdutos.add(iogurte);
+
+
+        System.out.println("recuperando produto com indice 4 " + listaDeProdutos.get(4));
+        System.out.println(listaDeProdutos);
+
+
 
     }
 }

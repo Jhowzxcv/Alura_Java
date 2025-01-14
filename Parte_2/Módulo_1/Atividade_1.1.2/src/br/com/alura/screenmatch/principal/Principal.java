@@ -3,6 +3,7 @@ package br.com.alura.screenmatch.principal;
 import br.com.alura.screenmatch.calculos.*;
 import br.com.alura.screenmatch.modelos.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Principal {
@@ -112,7 +113,7 @@ public class Principal {
         double mediaArredondada = (double) Math.round(media * 100) /100;
         System.out.println("Média dos valores dos produtos: " + mediaArredondada);*/
 
-        Circulo circulo = new Circulo("circulo", 4);
+       /* Circulo circulo = new Circulo("circulo", 4);
         Quadrilatero quadrilatero = new Quadrilatero("quadrilatero", 3, 4);
 
         ArrayList<Forma> listaDeFormas = new ArrayList<>();
@@ -121,7 +122,30 @@ public class Principal {
 
         for (int i = 0; i < listaDeFormas.size(); i++) {
             System.out.println(listaDeFormas.get(i).getNome() +": " +listaDeFormas.get(i).calcularArea());
+        }*/
+
+       /* ContaBancaria joao = new ContaBancaria(1234, 1500);
+        ContaBancaria maria = new ContaBancaria(2345, 1750);
+        ContaBancaria carlos = new ContaBancaria(3456, 900);
+        ContaBancaria pedro = new ContaBancaria(4567, 12000);
+
+        ArrayList<ContaBancaria> contas = new ArrayList<>();
+        contas.add(joao);
+        contas.add(maria);
+        contas.add(carlos);
+        contas.add(pedro);
+
+        double maiorSaldo = 0;
+        for (int i = 1; i < contas.size(); i++) {
+            int saldoAnterior = contas.get(i).getSaldo();
+
+            if (saldoAnterior > contas.get(i-1).getSaldo()){
+                maiorSaldo = saldoAnterior;
+            }else {
+                maiorSaldo = contas.get(i-1).getSaldo();
+            }
         }
+        System.out.println("O maior saldo é:" + maiorSaldo);*/
 
 
 

@@ -1,5 +1,7 @@
 package br.com.alura.screenmatch.modelos;
 
+import java.sql.ClientInfoStatus;
+
 public class Produto {
     private String nome;
     private double preco;
@@ -41,4 +43,5 @@ public class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
 }

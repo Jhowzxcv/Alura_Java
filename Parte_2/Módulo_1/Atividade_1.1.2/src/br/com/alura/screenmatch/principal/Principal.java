@@ -1,10 +1,8 @@
+package br.com.alura.screenmatch.principal;
 
-
-import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
-import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
+import br.com.alura.screenmatch.calculos.*;
 import br.com.alura.screenmatch.modelos.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Principal {
@@ -62,7 +60,7 @@ public class Principal {
         System.out.println("toString do filme " + listaDeFilmes.get(0).toString());
 
 
-
+        // Atividade 1
        /* var paulo = new Pessoa();
         paulo.setNome("Paulo");
         paulo.setIdade(31);
@@ -83,7 +81,8 @@ public class Principal {
         System.out.println("Primeira pessoa da lista: " + listaDePessoas.get(0).getNome());
         System.out.println(listaDePessoas); */
 
-        Produto detergente = new Produto("Detergente", 3.50, 30);
+         // Atividade 2
+        /*Produto detergente = new Produto("Detergente", 3.50, 30);
         Produto sabaoEmPo = new Produto("Sabão em Pó", 12.00, 15);
         Produto esponja = new Produto("Esponja", 2.00, 50);
         Produto papelToalha = new Produto("Papel Toalha", 8.00, 20);
@@ -102,9 +101,27 @@ public class Principal {
         listaDeProdutos.add(queijo);
         listaDeProdutos.add(iogurte);
 
-
+        double total = 0;
         System.out.println("recuperando produto com indice 4 " + listaDeProdutos.get(4));
         System.out.println(listaDeProdutos);
+        for (int i = 0; i < listaDeProdutos.size(); i++) {
+            double valor = listaDeProdutos.get(i).getPreco();
+            total += valor;
+        };
+        double media = total/ listaDeProdutos.size();
+        double mediaArredondada = (double) Math.round(media * 100) /100;
+        System.out.println("Média dos valores dos produtos: " + mediaArredondada);*/
+
+        Circulo circulo = new Circulo("circulo", 4);
+        Quadrilatero quadrilatero = new Quadrilatero("quadrilatero", 3, 4);
+
+        ArrayList<Forma> listaDeFormas = new ArrayList<>();
+        listaDeFormas.add(circulo);
+        listaDeFormas.add(quadrilatero);
+
+        for (int i = 0; i < listaDeFormas.size(); i++) {
+            System.out.println(listaDeFormas.get(i).getNome() +": " +listaDeFormas.get(i).calcularArea());
+        }
 
 
 

@@ -5,6 +5,9 @@ import br.com.alura.screenmatch.modelos.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) {
@@ -82,7 +85,7 @@ public class Principal {
         System.out.println("Primeira pessoa da lista: " + listaDePessoas.get(0).getNome());
         System.out.println(listaDePessoas); */
 
-         // Atividade 2
+        // Atividade 2
         /*Produto detergente = new Produto("Detergente", 3.50, 30);
         Produto sabaoEmPo = new Produto("Sabão em Pó", 12.00, 15);
         Produto esponja = new Produto("Esponja", 2.00, 50);
@@ -146,6 +149,74 @@ public class Principal {
             }
         }
         System.out.println("O maior saldo é:" + maiorSaldo);*/
+
+
+        Scanner scanner = new Scanner(System.in);
+        int escolha = 1;
+
+        double valor = 0;
+
+        String produto = "";
+
+        double total = 0;
+
+        Desafio objeto = null;
+
+        List<Desafio> listaDeCompras = new ArrayList<>();
+
+        System.out.println("Digite o limite do cartão:");
+        double limite = scanner.nextInt();
+
+        while (escolha == 1) {
+            System.out.println("Digite o produto:");
+            scanner.nextLine();
+            produto = scanner.nextLine();
+
+            System.out.println("Digite o valor do produto: " + produto);
+            valor = scanner.nextInt();
+            if (valor > limite){
+                System.out.println("Saldo insuficiente!\n");
+                break;
+            }
+                total += valor;
+
+
+
+
+
+            if (total > limite) {
+
+            }else {
+                System.out.println("Compra Realizada!\n");
+                objeto = new Desafio(produto, valor);
+                listaDeCompras.add(objeto);
+            }
+
+            if (total == limite) {
+                System.out.println("Limite atingido!\n");
+                break;
+            }
+            System.out.println("Digite 0 para sair ou 1 para continuar");
+            escolha = scanner.nextInt();
+        }
+
+        Collections.sort(listaDeCompras);
+
+        System.out.println("""
+                *************************************
+                COMPRAS REALIZADAS:
+                """);
+             listaDeCompras.forEach(System.out::println);
+
+        System.out.println( """
+                
+                *************************************
+                """);
+
+
+        System.out.println("Limite restante: " + (limite - total));
+
+
 
 
 

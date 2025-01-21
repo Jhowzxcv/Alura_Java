@@ -1,10 +1,19 @@
 package br.com.alura.screenmatch.principal;
 
+import br.com.alura.screenmatch.modelos.Fulano;
+import br.com.alura.screenmatch.modelos.Livro;
+import br.com.alura.screenmatch.modelos.Titulo;
+import br.com.alura.screenmatch.modelos.TituloOmdb;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 import java.util.Scanner;
 
 public class PrincipalComBusca {
@@ -21,7 +30,47 @@ public class PrincipalComBusca {
                 .build();
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+
+        String json = response.body();
+        System.out.println(json);
+
+        Gson gsonbuilder = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .create();
+
+        TituloOmdb meuTituloOmdb = gsonbuilder.fromJson(json, TituloOmdb.class);
+        System.out.println(meuTituloOmdb);
+        Titulo meuTitulo = new Titulo(meuTituloOmdb);
+        System.out.println("Titulo convertido:");
+        System.out.println(meuTitulo);
+
+        Gson gson = new Gson();
+
+        String jsonAtividade = """
+          {
+            "nome" : "pedro",
+            "cidade" : "sp"
+          }
+        """;
+
+        Fulano pedro = gson.fromJson(jsonAtividade, Fulano.class);
+        System.out.println(pedro);
+
+        String jsonAtividade2 = """
+                {
+                  "titulo": "Java Para Iniciantes",
+                  "autor": "João Silva",
+                  "editora": {
+                    "nome": "Tech Books",
+                    "cidade": "São Paulo"
+                  }
+                }
+                
+                """;
+
+        Livro livro = gson.fromJson(jsonAtividade2, Livro.class);
+        System.out.println(livro);
+
     }
 }
 

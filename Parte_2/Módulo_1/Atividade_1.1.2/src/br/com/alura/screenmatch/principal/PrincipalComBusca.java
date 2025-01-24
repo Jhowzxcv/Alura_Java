@@ -1,11 +1,9 @@
 package br.com.alura.screenmatch.principal;
 
-import br.com.alura.screenmatch.execao.ErroConsultaGitHubException;
 import br.com.alura.screenmatch.execao.ErroDeConversaoDeAnoException;
+import br.com.alura.screenmatch.modelos.Cep;
 import br.com.alura.screenmatch.modelos.Titulo;
 import br.com.alura.screenmatch.modelos.TituloOmdb;
-import br.com.alura.screenmatch.modelos.UsuarioGitHub;
-import br.com.alura.screenmatch.modelos.Veiculo;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,7 +16,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class PrincipalComBusca {
@@ -38,7 +35,7 @@ public class PrincipalComBusca {
             System.out.println("Digite um filme para busca");
             busca = leitura.nextLine();
 
-            if (busca.equalsIgnoreCase("sair")){
+            if (busca.equalsIgnoreCase("sair")) {
                 break;
             }
 
@@ -82,8 +79,6 @@ public class PrincipalComBusca {
         escrita.close();
 
         System.out.println("O programa finalizou corretamente");
-
-
 
 
         Gson gson = new Gson();
@@ -206,16 +201,16 @@ class Atividade3 {
         }
 
         System.out.println("Digite o nome de usuario");
-        var buscaGit = leitura.nextLine();
+        var buscaCep = leitura.nextLine();
 
-        String enderecoGit = "https://api.github.com/users/" + buscaGit.replace(" ", "+");
+        String enderecoCep = "https://api.github.com/users/" + buscaCep.replace(" ", "+");
        try {
             HttpClient clientGit = HttpClient.newHttpClient();
-            HttpRequest requestGit = HttpRequest.newBuilder()
-                    .uri(URI.create(enderecoGit))
+            HttpRequest requestCep = HttpRequest.newBuilder()
+                    .uri(URI.create(enderecoCep))
                     .build();
             HttpResponse<String> responseGit = clientGit
-                    .send(requestGit, HttpResponse.BodyHandlers.ofString());
+                    .send(requestCep, HttpResponse.BodyHandlers.ofString());
 
             String jsonGit = responseGit.body();
 
@@ -232,14 +227,46 @@ class Atividade3 {
 
        }catch (ErroConsultaGitHubException e){
            System.out.println(e.getMensagem());
-       }*/
+       }
 
         Veiculo vectra = new Veiculo("Chevrolet", "Vectra", 2012);
 
         String jsonVeiculo = gson.toJson(vectra);
 
-        System.out.println(jsonVeiculo);
+        System.out.println(jsonVeiculo);*/
+
+        System.out.println("Digite o seu cep");
+        String buscaCep = leitura.nextLine();
+
+        String enderecoCep = "http://viacep.com.br/ws/" + buscaCep.replace("-", "") + "/json/";
+        //try {
+            HttpClient clientCep = HttpClient.newHttpClient();
+            HttpRequest requestCep = HttpRequest.newBuilder()
+                    .uri(URI.create(enderecoCep))
+                    .build();
+            HttpResponse<String> responseCep = clientCep
+                    .send(requestCep, HttpResponse.BodyHandlers.ofString());
+
+            String jsonCep = responseCep.body();
+
+            Gson gsonCep = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .create();
+
+            Cep endereco = gsonCep.fromJson(jsonCep, Cep.class);
+
+        FileWriter endereçoEscrito = new FileWriter("endereço.json");
+        endereçoEscrito.write(gsonCep.toJson(endereco));
+        endereçoEscrito.close();
 
 
+            /*if (Objects.equals(usuarioGitHub.message(), "Not Found")){
+                throw new ErroConsultaGitHubException("Usuario não encontrado, confira o nome");
+            }else {
+                System.out.println(jsonCep);
+            }*/
+
+
+        //}
     }
 }

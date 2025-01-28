@@ -233,7 +233,7 @@ class Atividade3 {
 
         String jsonVeiculo = gson.toJson(vectra);
 
-        System.out.println(jsonVeiculo);*/
+        System.out.println(jsonVeiculo);
 
         System.out.println("Digite o seu cep");
         String buscaCep = leitura.nextLine();
@@ -260,13 +260,8 @@ class Atividade3 {
         endereçoEscrito.close();
 
 
-            /*if (Objects.equals(usuarioGitHub.message(), "Not Found")){
-                throw new ErroConsultaGitHubException("Usuario não encontrado, confira o nome");
-            }else {
-                System.out.println(jsonCep);
+
             }*/
 
-
-        //}
     }
 }

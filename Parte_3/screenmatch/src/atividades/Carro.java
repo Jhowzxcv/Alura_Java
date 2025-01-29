@@ -1,3 +1,5 @@
+package atividades;
+
 public class Carro {
     String modelo;
     int ano;

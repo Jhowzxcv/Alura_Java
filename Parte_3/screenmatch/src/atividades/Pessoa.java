@@ -1,3 +1,5 @@
+package atividades;
+
 public class Pessoa {
 
     String ola(){

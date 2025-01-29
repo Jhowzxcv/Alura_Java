@@ -1,3 +1,5 @@
+package atividades;
+
 public class Musica {
     String nome;
     String artista;

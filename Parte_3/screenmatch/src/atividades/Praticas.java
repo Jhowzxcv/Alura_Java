@@ -1,6 +1,7 @@
 package atividades;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Praticas {
     public static void main(String[] args) {
@@ -23,8 +24,8 @@ public class Praticas {
         System.out.println(musica.totalDeAvaliacoes);
         System.out.println(musica.pegaMedia());
 
-        atividades.Carro carro = new atividades.Carro();
-        carro.modelo = "Opala";
+        double[] precoOpala = {125, 135, 150};
+        atividades.Carro carro = new atividades.Carro("Opala",precoOpala );
         carro.ano = 1971;
         carro.cor = "preto";
 
@@ -58,5 +59,31 @@ public class Praticas {
         harry.setAutor("J. K. Rooling");
 
         System.out.println(harry.exibirDetalhes());
+
+        double[] precoCamaro = {250, 350, 400};
+        Arrays.sort(precoCamaro);
+
+        double menor = precoCamaro[0];
+        double maior = precoCamaro[precoCamaro.length-1];
+
+        Carro camaro = new Carro("camaro", precoCamaro);
+        System.out.println("dentro dos 3 anos o menor preço é: "+ menor + " e o maior: " + maior);
+
+        Gato gato = new Gato();
+        Cachorro cachorro = new Cachorro();
+
+        System.out.println("ações do gato: " + gato.emitirSom() + ", " + gato.arranharMoveis());
+        System.out.println("ações do cachorro: " + cachorro.emitirSom() + ", " + cachorro.abanarRabo());
+
+        ContaCorrente conta = new ContaCorrente();
+        conta.setSaldo(1000);
+        conta.cobrarTarifaMensal(30);
+        System.out.println(conta.getSaldo());
+
+        GeradorDePrimos gerador = new GeradorDePrimos();
+
+        int numero = 38;
+        int proximo = gerador.proximoPrimo(numero);
+        System.out.println("o primo depois de "+ numero +  " é: " + proximo);
     }
 }

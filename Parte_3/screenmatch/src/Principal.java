@@ -1,4 +1,7 @@
+
+import br.com.alura.screenmatch.calculo.CalculadoraDeTempo;
 import br.com.alura.screenmatch.modelos.Filme;
+import br.com.alura.screenmatch.modelos.Serie;
 
 public class Principal {
     public static void main(String[] args) {
@@ -6,6 +9,7 @@ public class Principal {
         meuFilme.setNome("O Poderoso Chefão");
         meuFilme.setAnoDeLancamento(1970);
         meuFilme.setDuracaoEmMinutos(180);
+        System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos());
 
         meuFilme.exibeFichaTecnica();
         meuFilme.avalia(8);
@@ -14,38 +18,27 @@ public class Principal {
         System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacoes());
         System.out.println("Média: " + meuFilme.pegaMedia());
 
-       /* atividades.Pessoa pessoa = new atividades.Pessoa();
-        System.out.println(pessoa.ola());
+        Serie lost = new Serie();
+        lost.setNome("lost");
+        lost.setAnoDeLancamento(2000);
+        lost.exibeFichaTecnica();
+        lost.setTemporadas(10);
+        lost.setMinutosPorEpisodio(50);
+        lost.setEpisodiosPorTemporada(10);
+        System.out.println("Duração para maratonar a serie: " + lost.getDuracaoEmMinutos());
 
-        atividades.Calculadora calculadora = new atividades.Calculadora();
-        System.out.println(calculadora.dobra(2));
+        Filme outroFilme =  new Filme();
+        outroFilme.setNome("Avatar");
+        outroFilme.setAnoDeLancamento(2023);
+        outroFilme.setDuracaoEmMinutos(200);
+        System.out.println("Duração do filme: " + outroFilme.getDuracaoEmMinutos());
 
-        atividades.Musica musica = new atividades.Musica();
-        musica.nome = "All girls are the same";
-        musica.artista = "Juice WRLD";
-        musica.anoDeLancamento = 2018;
+        CalculadoraDeTempo calculadora = new CalculadoraDeTempo();
+        calculadora.inclui(meuFilme);
+        calculadora.inclui(outroFilme);
+        calculadora.inclui(lost);
+        System.out.println(calculadora.getTempoTotal());
 
-        musica.exibeFichaTecnica();
-        musica.avalia(8);
-        musica.avalia(5);
-        musica.avalia(10);
-        System.out.println(musica.somaDasAvaliacoes);
-        System.out.println(meuFilme.totalDeAvaliacoes);
-        System.out.println(meuFilme.pegaMedia());
-
-        atividades.Carro carro = new atividades.Carro();
-        carro.modelo = "Opala";
-        carro.ano = 1971;
-        carro.cor = "preto";
-
-        carro.exibeFichaTecnica();
-        System.out.println("Idade do carro: " + carro.idade(LocalDate.now().getYear()));
-
-        atividades.Aluno aluno = new atividades.Aluno();
-        aluno.nome = "Carlos Rodrigues";
-        aluno.idade = 16;
-
-        System.out.println(aluno.exibeInformacoes());*/
     }
 
 

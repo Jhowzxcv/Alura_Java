@@ -2,7 +2,7 @@ package atividades;
 
 public class ContaBancaria {
     private int numeroConta;
-    private double saldo;
+    protected double saldo;
     public String titular;
 
     public int getNumeroConta() {
@@ -19,5 +19,13 @@ public class ContaBancaria {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    public double depositar(double valor){
+        return this.saldo += valor;
+    }
+
+    public double sacar(double valor){
+        return this.saldo -= valor;
     }
 }

@@ -1,6 +1,8 @@
 package br.com.alura.screenmatch.modelos;
 
-public class Serie extends Titulo{
+import atividades.Cachorro;
+
+public class Serie extends Titulo {
     private int temporadas;
     private int episodiosPorTemporada;
     private boolean ativa;
@@ -42,4 +44,6 @@ public class Serie extends Titulo{
     public int getDuracaoEmMinutos() {
         return temporadas * episodiosPorTemporada * minutosPorEpisodio;
     }
+
+
 }

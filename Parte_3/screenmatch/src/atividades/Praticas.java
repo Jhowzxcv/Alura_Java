@@ -1,10 +1,12 @@
 package atividades;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Praticas {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
          atividades.Pessoa pessoa = new atividades.Pessoa();
         System.out.println(pessoa.ola());
 
@@ -57,6 +59,8 @@ public class Praticas {
         Livro harry = new Livro();
         harry.setTitulo("Harry Potter");
         harry.setAutor("J. K. Rooling");
+        harry.setPreco(200);
+        System.out.println(harry.calcularPrecoFinal(10, 25));
 
         System.out.println(harry.exibirDetalhes());
 
@@ -85,5 +89,29 @@ public class Praticas {
         int numero = 38;
         int proximo = gerador.proximoPrimo(numero);
         System.out.println("o primo depois de "+ numero +  " é: " + proximo);
+
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite o valor à ser convertido de dolar para real");
+        double valor = scanner.nextDouble();
+
+        ConversorMoeda conversorMoeda = new ConversorMoeda();
+        System.out.println(conversorMoeda.pegaCotacao());
+        System.out.println(conversorMoeda.converterDolarParaReal(valor));
+
+
+        CalculadoraSalaRetangular retangular = new CalculadoraSalaRetangular(2,2);
+        System.out.println(retangular.calcularArea());
+        System.out.println(retangular.calcularPerimetro());
+
+        TabuadaMultiplicacao tabuada = new TabuadaMultiplicacao(8);
+        tabuada.mostrarTabuada();
+
+        ConversorTemperaturaPadrao temperaturaPadrao = new ConversorTemperaturaPadrao(36);
+        System.out.println("Celsius para Fahrenheit: " + temperaturaPadrao.celsiusParaFahrenheit());
+        System.out.println("Fahrenheit para Celsius: " + temperaturaPadrao.fahrenheitParaCelsius());
+
+
     }
 }

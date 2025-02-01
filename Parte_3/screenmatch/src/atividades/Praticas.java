@@ -113,5 +113,17 @@ public class Praticas {
         System.out.println("Fahrenheit para Celsius: " + temperaturaPadrao.fahrenheitParaCelsius());
 
 
+        Cancao musica1 = new Cancao("Título da Música", 180, "Artista", "Gênero");
+        Podcast podcast1 = new Podcast("Título do Podcast", 3600, "Tema", "Apresentador");
+
+        System.out.println(musica1.reproduzir()); // Deve reproduzir a música
+        musica1.curtir(); // Deve aumentar o número de curtidas
+        System.out.println("Curtidas da música: " + musica1.getCurtidas());
+
+        System.out.println(podcast1.reproduzir());; // Deve reproduzir o podcast
+        podcast1.curtir(); // Deve aumentar o número de curtidas
+        System.out.println("Curtidas do podcast: " + podcast1.getCurtidas());
+
+
     }
 }

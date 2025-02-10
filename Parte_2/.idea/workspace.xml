@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ca206c3-0d97-4e30-a635-f94d2dd3c9bc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ScreenMatch/src/main/java/br/com/alura/ScreenMatch/service/ConsumoApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Atividades/src/main/java/br/com/alura/Atividades/models/Tarefa.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

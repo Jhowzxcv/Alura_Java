@@ -7,16 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 @SpringBootApplication
-public class AtividadesApplication implements CommandLineRunner {
+public class AtividadesApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtividadesApplication.class, args);
@@ -85,5 +81,46 @@ public class AtividadesApplication implements CommandLineRunner {
 		System.out.println("Média de avaliações de Produtos: " + mediaProduto);
 		System.out.println("Média de avaliações de Serviços: " + mediaServico);
 		System.out.println("Média de avaliações de Assinaturas: " + mediaAssinatura);
+
+		IMultiplicacao multiplicacao = (a, b) -> a * b;
+
+		int resultado = multiplicacao.multiplica(5, 7);
+		System.out.println("Resultado da multiplicação: " + resultado);
+
+		IVerificadorDeNumeroPrimo verifica = numero -> {
+			if (numero < 2) return false;
+			for (int i = 2; i <= Math.sqrt(numero); i++) {
+				if (numero % i == 0) return false;
+			}
+			return true;
+		};
+
+		int numeroTeste = 29;
+		System.out.println(numeroTeste + (verifica.ehPrimo(numeroTeste)? " é primo" : " não é primo"));
+
+		IConverteParaMaiusculo conversor = String::toUpperCase;
+		String str = "Teste do conversor";
+
+		System.out.println(conversor.converte(str));
+
+		IVerificaPalindromo verificador = texto -> {
+			String invertida = new StringBuilder(texto).reverse().toString();
+			return texto.equalsIgnoreCase(invertida);
+        };
+
+		String teste1 = "arara";
+		String teste2 = "palíndromo";
+
+		System.out.println(teste1 + (verificador.verificar(teste1) ? " é um palíndormo" : " não é um Palíndromo" ));
+		System.out.println(teste2 + (verificador.verificar(teste2) ? " é um palíndormo" : " não é um Palíndromo" ));
+
+
+		List<String> nomes = new ArrayList<>(Arrays.asList("Carlos", "Ana", "Bruno"));
+
+		Collections.sort(nomes, (s1, s2) -> s1.compareTo(s2));
+
+		System.out.println(nomes); // Imprime a lista ordenada: [Ana, Bruno, Carlos]
 	}
 }
+
+

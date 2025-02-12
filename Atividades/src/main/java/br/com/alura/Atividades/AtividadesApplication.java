@@ -10,9 +10,10 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
-public class AtividadesApplication implements CommandLineRunner{
+public class AtividadesApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtividadesApplication.class, args);
@@ -26,7 +27,7 @@ public class AtividadesApplication implements CommandLineRunner{
 		int num = scanner.nextInt();
 
 		for (int i = 0; i < num; i++) {
-			System.out.println(i+1);
+			System.out.println(i + 1);
 		}
 
 		Tarefa ex1 = new Tarefa();
@@ -96,7 +97,7 @@ public class AtividadesApplication implements CommandLineRunner{
 		};
 
 		int numeroTeste = 29;
-		System.out.println(numeroTeste + (verifica.ehPrimo(numeroTeste)? " é primo" : " não é primo"));
+		System.out.println(numeroTeste + (verifica.ehPrimo(numeroTeste) ? " é primo" : " não é primo"));
 
 		IConverteParaMaiusculo conversor = String::toUpperCase;
 		String str = "Teste do conversor";
@@ -106,21 +107,94 @@ public class AtividadesApplication implements CommandLineRunner{
 		IVerificaPalindromo verificador = texto -> {
 			String invertida = new StringBuilder(texto).reverse().toString();
 			return texto.equalsIgnoreCase(invertida);
-        };
+		};
 
 		String teste1 = "arara";
 		String teste2 = "palíndromo";
 
-		System.out.println(teste1 + (verificador.verificar(teste1) ? " é um palíndormo" : " não é um Palíndromo" ));
-		System.out.println(teste2 + (verificador.verificar(teste2) ? " é um palíndormo" : " não é um Palíndromo" ));
-
+		System.out.println(teste1 + (verificador.verificar(teste1) ? " é um palíndromico" : " não é um palíndromo"));
+		System.out.println(teste2 + (verificador.verificar(teste2) ? " é um palíndromico" : " não é um palíndromo"));
 
 		List<String> nomes = new ArrayList<>(Arrays.asList("Carlos", "Ana", "Bruno"));
-
 		Collections.sort(nomes, (s1, s2) -> s1.compareTo(s2));
 
 		System.out.println(nomes); // Imprime a lista ordenada: [Ana, Bruno, Carlos]
+
+		IDivisao divisao = (int a, int b) -> {
+			if (b == 0)
+				throw new ArithmeticException("O divisor é zero");
+			return a / b;
+		};
+
+		try {
+			System.out.println(divisao.divide(10, 2));
+			System.out.println(divisao.divide(10, 0));
+		} catch (ArithmeticException e) {
+			System.out.println(e.getMessage());
+		}
+
+		List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5, 6);
+		numeros.stream()
+				.filter(n -> n % 2 == 0)
+				.forEach(System.out::println);
+
+		List<String> palavras = Arrays.asList("java", "stream", "lambda");
+		palavras.stream()
+				.map(s -> s.toUpperCase())
+				.forEach(System.out::println);
+
+		List<Integer> numeros2 = Arrays.asList(1, 2, 3, 4, 5, 6);
+		System.out.println(numeros2.stream()
+				.filter(n -> n % 2 != 0)
+				.map(n -> n * 2)
+				.toList());
+
+		List<String> palavras2 = Arrays.asList("apple", "banana", "apple", "orange", "banana");
+		System.out.println(palavras2.stream()
+				.collect(Collectors.toSet()));
+
+		// A função 'ehPrimo' agora é uma expressão lambda dentro do 'run'
+		IVerificadorDeNumeroPrimo ehPrimo = numero -> {
+			if (numero < 2) return false;
+			for (int i = 2; i <= Math.sqrt(numero); i++) {
+				if (numero % i == 0) return false;
+			}
+			return true;
+		};
+
+
+
+		List<List<Integer>> listaDeNumeros = Arrays.asList(
+				Arrays.asList(1, 2, 3, 4),
+				Arrays.asList(5, 6, 7, 8),
+				Arrays.asList(9, 10, 11, 12)
+		);
+		listaDeNumeros.stream()
+				.flatMap(Collection::stream)
+				.filter(ehPrimo::ehPrimo)
+				.forEach(System.out::println);
+
+		List<Pessoa> pessoas = Arrays.asList(
+				new Pessoa("Alice", 22),
+				new Pessoa("Bob", 17),
+				new Pessoa("Charlie", 19)
+		);
+
+		pessoas.stream()
+				.filter(p -> p.getIdade() >= 18)
+				.sorted(Comparator.comparing(Pessoa::getNome))
+				.forEach(System.out::println);
+
+		List<Produto2> produtos = Arrays.asList(
+				new Produto2("Smartphone", 800.0, "Eletrônicos"),
+				new Produto2("Notebook", 1500.0, "Eletrônicos"),
+				new Produto2("Teclado", 200.0, "Eletrônicos"),
+				new Produto2("Cadeira", 300.0, "Móveis"),
+				new Produto2("Monitor", 900.0, "Eletrônicos"),
+				new Produto2("Mesa", 700.0, "Móveis")
+		);
+
+		System.out.println(produtos.stream()
+				.filter(p -> p.getCategoria().equalsIgnoreCase("Eletrônicos") && p.getPreco() < 1000));
 	}
 }
-
-

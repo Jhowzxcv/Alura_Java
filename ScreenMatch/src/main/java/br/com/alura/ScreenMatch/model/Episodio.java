@@ -1,34 +1,31 @@
 package br.com.alura.ScreenMatch.model;
 
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-public class Episodios {
+public class Episodio {
     private Integer temporada;
     private String titulo;
     private Integer numeroEpisodio;
     private Double avaliacao;
-    private LocalDate dataDeLancamento;
+    private LocalDate dataLancamento;
 
-    public Episodios(Integer numeroTemporada, DadosEpisodio dadosEpisodio) {
+    public Episodio(Integer numeroTemporada, DadosEpisodio dadosEpisodio) {
         this.temporada = numeroTemporada;
         this.titulo = dadosEpisodio.titulo();
         this.numeroEpisodio = dadosEpisodio.numero();
 
-        try{
+        try {
             this.avaliacao = Double.valueOf(dadosEpisodio.avaliacao());
-        } catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             this.avaliacao = 0.0;
         }
 
         try {
-            this.dataDeLancamento = LocalDate.parse(dadosEpisodio.dataDeLancamento());
-        } catch (DateTimeParseException e){
-            this.dataDeLancamento = null;
+            this.dataLancamento = LocalDate.parse(dadosEpisodio.dataLancamento());
+        } catch (DateTimeParseException ex) {
+            this.dataLancamento = null;
         }
-
-
     }
 
     public Integer getTemporada() {
@@ -47,11 +44,11 @@ public class Episodios {
         this.titulo = titulo;
     }
 
-    public Integer getNumero() {
+    public Integer getNumeroEpisodio() {
         return numeroEpisodio;
     }
 
-    public void setNumero(Integer numeroEpisodio) {
+    public void setNumeroEpisodio(Integer numeroEpisodio) {
         this.numeroEpisodio = numeroEpisodio;
     }
 
@@ -63,12 +60,12 @@ public class Episodios {
         this.avaliacao = avaliacao;
     }
 
-    public LocalDate getDataDeLancamento() {
-        return dataDeLancamento;
+    public LocalDate getDataLancamento() {
+        return dataLancamento;
     }
 
-    public void setDataDeLancamento(LocalDate dataDeLancamento) {
-        this.dataDeLancamento = dataDeLancamento;
+    public void setDataLancamento(LocalDate dataLancamento) {
+        this.dataLancamento = dataLancamento;
     }
 
     @Override
@@ -77,6 +74,6 @@ public class Episodios {
                 ", titulo='" + titulo + '\'' +
                 ", numeroEpisodio=" + numeroEpisodio +
                 ", avaliacao=" + avaliacao +
-                ", dataDeLancamento=" + dataDeLancamento;
+                ", dataLancamento=" + dataLancamento ;
     }
 }

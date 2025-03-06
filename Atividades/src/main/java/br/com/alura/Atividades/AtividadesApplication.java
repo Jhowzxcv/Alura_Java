@@ -162,8 +162,6 @@ public class AtividadesApplication implements CommandLineRunner {
 			return true;
 		};
 
-
-
 		List<List<Integer>> listaDeNumeros = Arrays.asList(
 				Arrays.asList(1, 2, 3, 4),
 				Arrays.asList(5, 6, 7, 8),
@@ -195,6 +193,54 @@ public class AtividadesApplication implements CommandLineRunner {
 		);
 
 		System.out.println(produtos.stream()
-				.filter(p -> p.getCategoria().equalsIgnoreCase("Eletrônicos") && p.getPreco() < 1000));
+				.filter(p -> p.getCategoria().equalsIgnoreCase("Eletrônicos") && p.getPreco() < 1000)
+				.collect(Collectors.toList()));
+
+		List<String> input = Arrays.asList("10", "abc", "20", "30x");
+		List<Integer> inputFiltrado = new ArrayList<>();
+
+		for (String item : input) {
+			try {
+				inputFiltrado.add(Integer.parseInt(item));
+			} catch (NumberFormatException e) {
+				// Ignorar exceção
+			}
+		}
+		System.out.println(inputFiltrado);
+
+		System.out.println(processaNumero(Optional.of(5))); // Saída: Optional[25]
+		System.out.println(processaNumero(Optional.of(-3))); // Saída: Optional.empty
+		System.out.println(processaNumero(Optional.empty()));
+
+		System.out.println(obterPrimeiroEUltimoNome("  João Carlos Silva   ")); // Saída: "João Silva"
+		System.out.println(obterPrimeiroEUltimoNome("Maria   ")); // Saída: "Maria"
+
+		List<String> emails = Arrays.asList("TESTE@EXEMPLO.COM", "exemplo@Java.com ", "Usuario@teste.Com");
+		System.out.println(normalizeEmails(emails));
+		// Saída: ["teste@exemplo.com", "exemplo@java.com", "usuario@teste.com"]
+
+		System.out.println(Mes.FEVEREIRO.getNumeroDeDias()); // 28
+		System.out.println(Mes.JULHO.getNumeroDeDias()); // 31
+
+		System.out.println(CodigoErro.NOT_FOUND.getCodigo()); // 404
+		System.out.println(CodigoErro.BAD_REQUEST.getDescricao()); // Requisição inválida
+	}
+
+	public static Optional<Integer> processaNumero(Optional<Integer> numero) {
+		return numero.filter(n -> n > 0).map(n -> n * n).or(() -> Optional.of(0));
+	}
+
+	public static String obterPrimeiroEUltimoNome(String nomeCompleto) {
+		String[] nomes = nomeCompleto.trim().split("\\s+");
+		if (nomes.length == 1) {
+			return nomes[0]; // Apenas um nome
+		}
+		return nomes[0] + " " + nomes[nomes.length - 1]; // Primeiro e último
+	}
+
+	public static List<String> normalizeEmails(List<String> emails) {
+		return emails.stream()
+				.map(email -> email.trim().toLowerCase())
+				.collect(Collectors.toList());
 	}
 }

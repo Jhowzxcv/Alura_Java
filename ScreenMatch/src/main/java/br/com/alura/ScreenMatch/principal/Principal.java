@@ -2,12 +2,14 @@ package br.com.alura.ScreenMatch.principal;
 
 import br.com.alura.ScreenMatch.model.DadosSerie;
 import br.com.alura.ScreenMatch.model.DadosTemporada;
-import br.com.alura.ScreenMatch.model.Episodio;
 import br.com.alura.ScreenMatch.model.Serie;
 import br.com.alura.ScreenMatch.service.ConsumoApi;
 import br.com.alura.ScreenMatch.service.ConverteDados;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Principal {
@@ -18,13 +20,15 @@ public class Principal {
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
     private final String API_KEY = "&apikey=6585022c";
     private List<DadosSerie> dadosSeries = new ArrayList<>();
+
     public void exibeMenu() {
         var opcao = -1;
-        while (opcao != 0) {
+        while(opcao != 0) {
             var menu = """
                     1 - Buscar séries
                     2 - Buscar episódios
-                    3 - Listar series buscadas
+                    3 - Listar séries buscadas
+                                    
                     0 - Sair                                 
                     """;
 
@@ -80,10 +84,10 @@ public class Principal {
     private void listarSeriesBuscadas(){
         List<Serie> series = new ArrayList<>();
         series = dadosSeries.stream()
-                        .map(Serie::new)
-                                .toList();
+                .map(d -> new Serie(d))
+                .collect(Collectors.toList());
         series.stream()
-                        .sorted(Comparator.comparing(Serie::getGenero))
-                                .forEach(System.out::println);
+                .sorted(Comparator.comparing(Serie::getGenero))
+                .forEach(System.out::println);
     }
 }

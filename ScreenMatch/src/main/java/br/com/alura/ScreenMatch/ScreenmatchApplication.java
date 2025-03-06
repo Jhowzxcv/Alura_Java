@@ -1,6 +1,7 @@
 package br.com.alura.ScreenMatch;
 
 import br.com.alura.ScreenMatch.principal.Principal;
+import br.com.alura.ScreenMatch.service.ConsultaChatGPT;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,8 +15,10 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Principal principal = new Principal();
-		principal.exibeMenu();
-		//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
+//		Principal principal = new Principal();
+//		principal.exibeMenu();
+
+
+		System.out.println(ConsultaChatGPT.obterTraducao("hello"));
 	}
 }

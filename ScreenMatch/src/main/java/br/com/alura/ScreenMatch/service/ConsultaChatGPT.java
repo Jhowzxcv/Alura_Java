@@ -3,9 +3,11 @@ package br.com.alura.ScreenMatch.service;
 import com.theokanning.openai.completion.CompletionRequest;
 import com.theokanning.openai.service.OpenAiService;
 
+import javax.management.PersistentMBean;
+
 public class ConsultaChatGPT {
     public static String obterTraducao(String texto) {
-        OpenAiService service = new OpenAiService("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");
+        OpenAiService service = new OpenAiService(System.getenv("OPENAI_APIKEY"));
 
 
         CompletionRequest requisicao = CompletionRequest.builder()

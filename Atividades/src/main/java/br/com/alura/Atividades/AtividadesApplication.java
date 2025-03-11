@@ -1,7 +1,13 @@
 package br.com.alura.Atividades;
 
 import br.com.alura.Atividades.models.*;
+import br.com.alura.Atividades.postgres.Categoria;
+import br.com.alura.Atividades.postgres.Pedido;
+import br.com.alura.Atividades.postgres.repository.CategoriaRepository;
+import br.com.alura.Atividades.postgres.repository.PedidoRepository;
+import br.com.alura.Atividades.postgres.repository.ProdutoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,11 +15,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class AtividadesApplication implements CommandLineRunner {
+
+	@Autowired
+	private CategoriaRepository categoriaRepository;
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	@Autowired
+	private ProdutoRepository produtoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtividadesApplication.class, args);
@@ -224,7 +238,36 @@ public class AtividadesApplication implements CommandLineRunner {
 
 		System.out.println(CodigoErro.NOT_FOUND.getCodigo()); // 404
 		System.out.println(CodigoErro.BAD_REQUEST.getDescricao()); // Requisição inválida
-	}
+
+
+// Criando categorias
+		Categoria eletronicos = new Categoria("Eletrônicos");
+		Categoria informatica = new Categoria("Informática");
+		Categoria moveis = new Categoria("Móveis");
+
+// Salvando categorias
+		List<Categoria> categorias = Arrays.asList(eletronicos, informatica, moveis);
+		categoriaRepository.saveAll(categorias);
+
+// Criando produtos
+		br.com.alura.Atividades.postgres.Produto smartphone = new br.com.alura.Atividades.postgres.Produto("Smartphone", 1200.00);
+		br.com.alura.Atividades.postgres.Produto teclado = new br.com.alura.Atividades.postgres.Produto("Teclado Mecânico", 350.00);
+		br.com.alura.Atividades.postgres.Produto monitor = new br.com.alura.Atividades.postgres.Produto("Monitor Full HD", 900.00);
+
+// Salvando produtos
+		List<br.com.alura.Atividades.postgres.Produto> mercadorias = Arrays.asList(smartphone, teclado, monitor);
+		produtoRepository.saveAll(mercadorias);
+
+
+	// Criando pedidos
+	Pedido pedido1 = new Pedido(1L, LocalDate.now());
+	Pedido pedido2 = new Pedido(2L, LocalDate.of(2025, 3, 15));
+
+	// Salvando pedidos
+	List<Pedido> pedidos = Arrays.asList(pedido1, pedido2);
+	pedidoRepository.saveAll(pedidos);
+}
+
 
 	public static Optional<Integer> processaNumero(Optional<Integer> numero) {
 		return numero.filter(n -> n > 0).map(n -> n * n).or(() -> Optional.of(0));

@@ -2,8 +2,11 @@ package br.com.alura.Atividades;
 
 import br.com.alura.Atividades.models.*;
 import br.com.alura.Atividades.postgres.Categoria;
+import br.com.alura.Atividades.postgres.Fornecedor;
 import br.com.alura.Atividades.postgres.Pedido;
+import br.com.alura.Atividades.postgres.Produto;
 import br.com.alura.Atividades.postgres.repository.CategoriaRepository;
+import br.com.alura.Atividades.postgres.repository.FornecedorRepository;
 import br.com.alura.Atividades.postgres.repository.PedidoRepository;
 import br.com.alura.Atividades.postgres.repository.ProdutoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,6 +31,8 @@ public class AtividadesApplication implements CommandLineRunner {
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	@Autowired
+	private FornecedorRepository fornecedorRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtividadesApplication.class, args);
@@ -57,14 +62,14 @@ public class AtividadesApplication implements CommandLineRunner {
 		System.out.println(convertido);
 
 		// Criando listas de avaliações
-		List<Avaliacao<Produto>> avaliacoesProduto = new ArrayList<>();
+		List<Avaliacao<Produto3>> avaliacoesProduto = new ArrayList<>();
 		List<Avaliacao<Servico>> avaliacoesServico = new ArrayList<>();
 		List<Avaliacao<Assinatura>> avaliacoesAssinatura = new ArrayList<>();
 
 		// Criando objetos
-		Produto celular = new Produto("Celular", 1500);
-		Produto notebook = new Produto("Notebook", 3500);
-		Produto fone = new Produto("Fone de Ouvido", 200);
+		Produto3 celular = new Produto3("Celular", 1500);
+		Produto3 notebook = new Produto3("Notebook", 3500);
+		Produto3 fone = new Produto3("Fone de Ouvido", 200);
 
 		Servico instalacaoTV = new Servico("Instalação de TV", 150);
 		Servico reformaCozinha = new Servico("Reforma da Cozinha", 5000);
@@ -239,35 +244,155 @@ public class AtividadesApplication implements CommandLineRunner {
 		System.out.println(CodigoErro.NOT_FOUND.getCodigo()); // 404
 		System.out.println(CodigoErro.BAD_REQUEST.getDescricao()); // Requisição inválida
 
+		// INÍCIO DO CÓDIGO CORRIGIDO PARA ASSOCIAÇÃO DE CATEGORIAS E PRODUTOS
 
-// Criando categorias
-		Categoria eletronicos = new Categoria("Eletrônicos");
-		Categoria informatica = new Categoria("Informática");
-		Categoria moveis = new Categoria("Móveis");
+		produtoRepository.deleteAll();
+		categoriaRepository.deleteAll();
+		pedidoRepository.deleteAll();
+		fornecedorRepository.deleteAll();
 
-// Salvando categorias
-		List<Categoria> categorias = Arrays.asList(eletronicos, informatica, moveis);
-		categoriaRepository.saveAll(categorias);
-
-// Criando produtos
-		br.com.alura.Atividades.postgres.Produto smartphone = new br.com.alura.Atividades.postgres.Produto("Smartphone", 1200.00);
-		br.com.alura.Atividades.postgres.Produto teclado = new br.com.alura.Atividades.postgres.Produto("Teclado Mecânico", 350.00);
-		br.com.alura.Atividades.postgres.Produto monitor = new br.com.alura.Atividades.postgres.Produto("Monitor Full HD", 900.00);
-
-// Salvando produtos
-		List<br.com.alura.Atividades.postgres.Produto> mercadorias = Arrays.asList(smartphone, teclado, monitor);
-		produtoRepository.saveAll(mercadorias);
+// Criando categorias com IDs gerados (supondo que o ID seja gerado automaticamente ao salvar)
+// Criando categorias sem definir ID manualmente
+		Categoria eletronicos = new Categoria(null, "Eletrônicos");
+		Categoria informatica = new Categoria(null, "Informática");
+		Categoria moveis = new Categoria(null, "Móveis");
 
 
-	// Criando pedidos
-	Pedido pedido1 = new Pedido(1L, LocalDate.now());
-	Pedido pedido2 = new Pedido(2L, LocalDate.of(2025, 3, 15));
+// Salvando categorias primeiro para que tenham IDs gerados
+		categoriaRepository.saveAll(Arrays.asList(eletronicos, informatica, moveis));
 
-	// Salvando pedidos
-	List<Pedido> pedidos = Arrays.asList(pedido1, pedido2);
-	pedidoRepository.saveAll(pedidos);
-}
+// Criando fornecedores
+		Fornecedor fornecedor1 = new Fornecedor("Fornecedor A");
+		Fornecedor fornecedor2 = new Fornecedor("Fornecedor B");
+		Fornecedor fornecedor3 = new Fornecedor("Fornecedor C");
+		Fornecedor fornecedor4 = new Fornecedor("Fornecedor D");
 
+		fornecedorRepository.saveAll(Arrays.asList(fornecedor1, fornecedor2, fornecedor3, fornecedor4));
+
+// Usando o novo construtor e associando as categorias
+		Produto smartphone = new Produto("Smartphone", 1200.00, eletronicos, fornecedor1);
+		Produto tablet = new Produto("Tablet", 800.00, eletronicos, fornecedor2);
+		Produto notebookProd = new Produto("Notebook", 3500.00, informatica, fornecedor3);
+		Produto mouse = new Produto("Mouse sem fio", 120.00, informatica, fornecedor4);
+		Produto teclado = new Produto("Teclado Mecânico", 350.00, informatica, fornecedor1);
+		Produto monitor = new Produto("Monitor Full HD", 900.00, informatica, fornecedor2);
+		Produto mesa = new Produto("Mesa de escritório", 450.00, moveis, fornecedor3);
+		Produto cadeira = new Produto("Cadeira ergonômica", 650.00, moveis, fornecedor4);
+
+// Salvando produtos com suas categorias associadas
+		List<Produto> produtosIndividuais = Arrays.asList(
+				smartphone, tablet, notebookProd, mouse, teclado, monitor, mesa, cadeira
+		);
+		produtoRepository.saveAll(produtosIndividuais);
+
+// Abordagem alternativa usando lista de produtos por categoria
+		List<Produto> produtosEletronicos = new ArrayList<>();
+		produtosEletronicos.add(new Produto("Smart TV", 2500.00, eletronicos, fornecedor1));
+		produtosEletronicos.add(new Produto("Fone Bluetooth", 150.00, eletronicos, fornecedor2));
+
+		List<Produto> produtosInformatica = new ArrayList<>();
+		produtosInformatica.add(new Produto("SSD 500GB", 450.00, informatica, fornecedor3));
+		produtosInformatica.add(new Produto("WebCam HD", 200.00, informatica, fornecedor4));
+
+		List<Produto> produtosMoveis = new ArrayList<>();
+		produtosMoveis.add(new Produto("Estante", 800.00, moveis, fornecedor1));
+		produtosMoveis.add(new Produto("Sofá 3 lugares", 1800.00, moveis, fornecedor2));
+
+// Salvando os produtos das listas de categorias
+		produtoRepository.saveAll(produtosEletronicos);
+		produtoRepository.saveAll(produtosInformatica);
+		produtoRepository.saveAll(produtosMoveis);
+
+
+
+		// Associando produtos às categorias usando setProdutos
+		// Este método cuida de estabelecer a relação bidirecional
+		eletronicos.setProdutos(produtosEletronicos);
+		informatica.setProdutos(produtosInformatica);
+		moveis.setProdutos(produtosMoveis);
+
+		// Salvando categorias com seus produtos
+		categoriaRepository.saveAll(Arrays.asList(eletronicos, informatica, moveis));
+
+		// Exemplo de consulta das associações
+		System.out.println("\n=== Listando categorias e seus produtos ===");
+		categoriaRepository.findAll().forEach(categoria -> {
+			System.out.println("\nCategoria: " + categoria.getNome());
+			System.out.println("Produtos:");
+			categoria.getProdutos().forEach(produto ->
+					System.out.println(" - " + produto.getNome() + " (R$ " + produto.getPreco() + ")"));
+		});
+
+		// Criando pedidos
+		Pedido pedido1 = new Pedido(null, LocalDate.now());
+		Pedido pedido2 = new Pedido(null, LocalDate.of(2025, 3, 15));
+
+		// Salvando pedidos
+		pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2));
+
+		// INÍCIO DO CÓDIGO PARA ASSOCIAÇÃO DE PRODUTOS E PEDIDOS
+
+		// Recuperar produtos e pedidos já salvos
+		List<Produto> todosProdutos = produtoRepository.findAll();
+		List<Pedido> todosPedidos = pedidoRepository.findAll();
+
+		// Verificar se existem produtos e pedidos para associar
+		if (!todosProdutos.isEmpty() && !todosPedidos.isEmpty()) {
+			Pedido primeiroPedido = todosPedidos.get(0);
+			Pedido segundoPedido = todosPedidos.size() > 1 ? todosPedidos.get(1) : primeiroPedido;
+
+			// Associando alguns produtos ao primeiro pedido
+			List<Produto> produtosPrimeiroPedido = new ArrayList<>();
+			produtosPrimeiroPedido.add(todosProdutos.get(0)); // Smartphone
+			produtosPrimeiroPedido.add(todosProdutos.get(2)); // Notebook
+			produtosPrimeiroPedido.add(todosProdutos.get(4)); // Teclado
+
+			// Associar produtos ao pedido (caso Pedido tenha um método setProdutos)
+			primeiroPedido.setProdutos(produtosPrimeiroPedido);
+
+			// Também podemos adicionar a referência do pedido em cada produto
+			for (Produto produto : produtosPrimeiroPedido) {
+				if (produto.getPedidos() == null) {
+					produto.setPedidos(new ArrayList<>());
+				}
+				produto.getPedidos().add(primeiroPedido);
+			}
+
+			// Associando outros produtos ao segundo pedido
+			List<Produto> produtosSegundoPedido = new ArrayList<>();
+			produtosSegundoPedido.add(todosProdutos.get(1)); // Tablet
+			produtosSegundoPedido.add(todosProdutos.get(5)); // Monitor
+			produtosSegundoPedido.add(todosProdutos.get(7)); // Cadeira
+
+			// Associar produtos ao pedido
+			segundoPedido.setProdutos(produtosSegundoPedido);
+
+			// Também adicionamos a referência do pedido em cada produto
+			for (Produto produto : produtosSegundoPedido) {
+				if (produto.getPedidos() == null) {
+					produto.setPedidos(new ArrayList<>());
+				}
+				produto.getPedidos().add(segundoPedido);
+			}
+
+			// Salvando as alterações
+			produtoRepository.saveAll(todosProdutos);
+			pedidoRepository.saveAll(todosPedidos);
+
+			// Exibindo os pedidos e seus produtos
+			System.out.println("\n=== Listando pedidos e seus produtos ===");
+			pedidoRepository.findAll().forEach(pedido -> {
+				System.out.println("\nPedido ID: " + pedido.getId() + " - Data: " + pedido.getData());
+				System.out.println("Produtos:");
+				pedido.getProdutos().forEach(produto ->
+						System.out.println(" - " + produto.getNome() + " (R$ " + produto.getPreco() + ")"));
+			});
+		} else {
+			System.out.println("Não há produtos ou pedidos suficientes para associação.");
+		}
+
+		// FIM DO CÓDIGO PARA ASSOCIAÇÃO DE PRODUTOS E PEDIDOS
+	}
 
 	public static Optional<Integer> processaNumero(Optional<Integer> numero) {
 		return numero.filter(n -> n > 0).map(n -> n * n).or(() -> Optional.of(0));

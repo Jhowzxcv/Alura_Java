@@ -1,10 +1,10 @@
 package br.com.alura.Atividades.models;
 
-public class Produto {
+public class Produto3 {
     private String nome;
     private double preco;
 
-    public Produto(String nome, double preco) {
+    public Produto3(String nome, double preco) {
         this.nome = nome;
         this.preco = preco;
     }

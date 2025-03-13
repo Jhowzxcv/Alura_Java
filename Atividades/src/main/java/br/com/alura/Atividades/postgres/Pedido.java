@@ -1,11 +1,10 @@
 package br.com.alura.Atividades.postgres;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Pedido {
@@ -13,6 +12,9 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     LocalDate data;
+
+    @ManyToMany(mappedBy = "pedidos", fetch = FetchType.EAGER)
+    private List<Produto> produtos = new ArrayList<>();
 
     public Pedido() {}
 
@@ -27,5 +29,13 @@ public class Pedido {
 
     public LocalDate getData() {
         return data;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 }

@@ -1,9 +1,6 @@
 package br.com.alura.ScreenMatch.principal;
 
-import br.com.alura.ScreenMatch.model.DadosSerie;
-import br.com.alura.ScreenMatch.model.DadosTemporada;
-import br.com.alura.ScreenMatch.model.Episodio;
-import br.com.alura.ScreenMatch.model.Serie;
+import br.com.alura.ScreenMatch.model.*;
 import br.com.alura.ScreenMatch.repository.SerieRepository;
 import br.com.alura.ScreenMatch.service.ConsumoApi;
 import br.com.alura.ScreenMatch.service.ConverteDados;
@@ -28,15 +25,16 @@ public class Principal {
 
     public void exibeMenu() {
         var opcao = -1;
-        while(opcao != 0) {
+        while (opcao != 0) {
             var menu = """
                     1 - Buscar séries
                     2 - Buscar episódios
                     3 - Listar séries buscadas
                     4 - buscar serie por titulo
                     5 - buscar serie por ator
+                    6 - buscar top 5 series
+                    7 - buscar series por categoria
                     
-                                    
                     0 - Sair                                 
                     """;
 
@@ -60,6 +58,12 @@ public class Principal {
                 case 5:
                     buscarSeriesPorAtor();
                     break;
+                case 6:
+                    buscarTop5Series();
+                    break;
+                case 7:
+                    buscarSeriePorCategoria();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -68,7 +72,6 @@ public class Principal {
             }
         }
     }
-
 
 
     private void buscarSerieWeb() {
@@ -123,22 +126,41 @@ public class Principal {
                 .sorted(Comparator.comparing(Serie::getGenero))
                 .forEach(System.out::println);
     }
+
     private void buscarSeriePorTitulo() {
         System.out.println("Escolha uma serie pelo nome:");
         var nomeserie = leitura.nextLine();
         Optional<Serie> seriebuscada = repositorio.findByTituloContainingIgnoreCase(nomeserie);
 
-        if (seriebuscada.isPresent()){
+        if (seriebuscada.isPresent()) {
             System.out.println("Dados da série: " + seriebuscada.get());
-        }else {
+        } else {
             System.out.println("Serie nao encontrada!");
         }
     }
+
     private void buscarSeriesPorAtor() {
         System.out.println("qual o nome do autor para busca");
         var nomeAtor = leitura.nextLine();
+        System.out.println("a partir de qual avaliação?");
+        var avaliacao = leitura.nextDouble();
         System.out.println("Buscando séries para o ator: " + nomeAtor);
-        List<Serie> seriesEncontradas = repositorio.findByAtoresContainingIgnoreCase(nomeAtor);
-        System.out.println(seriesEncontradas);
+        List<Serie> seriesEncontradas = repositorio.findByAtoresContainingIgnoreCaseAndAvaliacaoGreaterThanEqual(nomeAtor, avaliacao);
+        System.out.println("Series em que " + nomeAtor + " trabalhou e tem avaliação " + avaliacao + " ou superior:");
+        seriesEncontradas.forEach(s -> System.out.println(s.getTitulo() + " avaliação: " + s.getAvaliacao()));
+    }
+
+    private void buscarTop5Series() {
+        List<Serie> serieTop = repositorio.findTop5ByOrderByAvaliacaoDesc();
+        serieTop.forEach(s -> System.out.println(s.getTitulo() + " avaliação: " + s.getAvaliacao()));;
+    }
+
+    private void buscarSeriePorCategoria() {
+        System.out.println("Deseja buscar séries de qual categoria?");
+        var nomeGenero = leitura.nextLine();
+        Categoria categoria = Categoria.fromPortugues(nomeGenero);
+        List<Serie> seriesPorCategoria = repositorio.findByGenero(categoria);
+        System.out.println("Series da categoria " + nomeGenero);
+        seriesPorCategoria.forEach(System.out::println);
     }
 }

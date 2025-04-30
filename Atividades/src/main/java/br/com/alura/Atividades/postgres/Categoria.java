@@ -10,14 +10,14 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true, nullable = false)
     String nome;
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "categoria", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<Produto> produtos =  new ArrayList<>();
 
     public Categoria() {}
 
-    public Categoria(Long id, String nome) {
-        this.id = id;
+    public Categoria(String nome) {
         this.nome = nome;
     }
 

@@ -1,7 +1,8 @@
 package br.com.alura.Atividades.postgres;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Produto {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Categoria categoria;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -75,4 +77,19 @@ public class Produto {
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
+
+    List<Long> pedidosIds = pedidos.stream()
+            .map(Pedido::getId)
+            .toList(); // Converte para lista de IDs
+
+    @Override
+    public String toString() {
+        return "id: " + id +
+                ", nome: " + nome +
+                ", preco: " + preco +
+                ", categoria: " + categoria.nome +
+                ", id do pedido: " +  pedidosIds +
+                ", fornecedor: " + fornecedor + "\n";
+    }
 }
+

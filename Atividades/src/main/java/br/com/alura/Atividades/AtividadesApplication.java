@@ -9,6 +9,7 @@ import br.com.alura.Atividades.postgres.repository.CategoriaRepository;
 import br.com.alura.Atividades.postgres.repository.FornecedorRepository;
 import br.com.alura.Atividades.postgres.repository.PedidoRepository;
 import br.com.alura.Atividades.postgres.repository.ProdutoRepository;
+import br.com.alura.Atividades.postgres.services.CategoriaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +17,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -33,6 +35,8 @@ public class AtividadesApplication implements CommandLineRunner {
 	private ProdutoRepository produtoRepository;
 	@Autowired
 	private FornecedorRepository fornecedorRepository;
+	@Autowired
+	private CategoriaService categoriaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtividadesApplication.class, args);
@@ -246,73 +250,74 @@ public class AtividadesApplication implements CommandLineRunner {
 
 		// INÍCIO DO CÓDIGO CORRIGIDO PARA ASSOCIAÇÃO DE CATEGORIAS E PRODUTOS
 
-		produtoRepository.deleteAll();
-		categoriaRepository.deleteAll();
-		pedidoRepository.deleteAll();
-		fornecedorRepository.deleteAll();
+//		produtoRepository.deleteAll();
+//		categoriaRepository.deleteAll();
+//		pedidoRepository.deleteAll();
+//		fornecedorRepository.deleteAll();
 
 // Criando categorias com IDs gerados (supondo que o ID seja gerado automaticamente ao salvar)
 // Criando categorias sem definir ID manualmente
-		Categoria eletronicos = new Categoria(null, "Eletrônicos");
-		Categoria informatica = new Categoria(null, "Informática");
-		Categoria moveis = new Categoria(null, "Móveis");
+//		Categoria eletronicos = categoriaService.obterOuCriarCategoria("Eletrônicos");
+//		Categoria informatica = categoriaService.obterOuCriarCategoria("informática");
+//		Categoria moveis = categoriaService.obterOuCriarCategoria("Móveis");
+
 
 
 // Salvando categorias primeiro para que tenham IDs gerados
-		categoriaRepository.saveAll(Arrays.asList(eletronicos, informatica, moveis));
+//		categoriaRepository.saveAll(Arrays.asList(eletronicos, informatica, moveis));
 
 // Criando fornecedores
-		Fornecedor fornecedor1 = new Fornecedor("Fornecedor A");
-		Fornecedor fornecedor2 = new Fornecedor("Fornecedor B");
-		Fornecedor fornecedor3 = new Fornecedor("Fornecedor C");
-		Fornecedor fornecedor4 = new Fornecedor("Fornecedor D");
-
-		fornecedorRepository.saveAll(Arrays.asList(fornecedor1, fornecedor2, fornecedor3, fornecedor4));
+//		Fornecedor fornecedor1 = new Fornecedor("Fornecedor A");
+//		Fornecedor fornecedor2 = new Fornecedor("Fornecedor B");
+//		Fornecedor fornecedor3 = new Fornecedor("Fornecedor C");
+//		Fornecedor fornecedor4 = new Fornecedor("Fornecedor D");
+//
+//		fornecedorRepository.saveAll(Arrays.asList(fornecedor1, fornecedor2, fornecedor3, fornecedor4));
 
 // Usando o novo construtor e associando as categorias
-		Produto smartphone = new Produto("Smartphone", 1200.00, eletronicos, fornecedor1);
-		Produto tablet = new Produto("Tablet", 800.00, eletronicos, fornecedor2);
-		Produto notebookProd = new Produto("Notebook", 3500.00, informatica, fornecedor3);
-		Produto mouse = new Produto("Mouse sem fio", 120.00, informatica, fornecedor4);
-		Produto teclado = new Produto("Teclado Mecânico", 350.00, informatica, fornecedor1);
-		Produto monitor = new Produto("Monitor Full HD", 900.00, informatica, fornecedor2);
-		Produto mesa = new Produto("Mesa de escritório", 450.00, moveis, fornecedor3);
-		Produto cadeira = new Produto("Cadeira ergonômica", 650.00, moveis, fornecedor4);
+//		Produto smartphone = new Produto("Smartphone", 1200.00, eletronicos, fornecedor1);
+//		Produto tablet = new Produto("Tablet", 800.00, eletronicos, fornecedor2);
+//		Produto notebookProd = new Produto("Notebook", 3500.00, informatica, fornecedor3);
+//		Produto mouse = new Produto("Mouse sem fio", 120.00, informatica, fornecedor4);
+//		Produto teclado = new Produto("Teclado Mecânico", 350.00, informatica, fornecedor1);
+//		Produto monitor = new Produto("Monitor Full HD", 900.00, informatica, fornecedor2);
+//		Produto mesa = new Produto("Mesa de escritório", 450.00, moveis, fornecedor3);
+//		Produto cadeira = new Produto("Cadeira ergonômica", 650.00, moveis, fornecedor4);
 
 // Salvando produtos com suas categorias associadas
-		List<Produto> produtosIndividuais = Arrays.asList(
-				smartphone, tablet, notebookProd, mouse, teclado, monitor, mesa, cadeira
-		);
-		produtoRepository.saveAll(produtosIndividuais);
+//		List<Produto> produtosIndividuais = Arrays.asList(
+//				smartphone, tablet, notebookProd, mouse, teclado, monitor, mesa, cadeira
+//		);
+//		produtoRepository.saveAll(produtosIndividuais);
 
 // Abordagem alternativa usando lista de produtos por categoria
-		List<Produto> produtosEletronicos = new ArrayList<>();
-		produtosEletronicos.add(new Produto("Smart TV", 2500.00, eletronicos, fornecedor1));
-		produtosEletronicos.add(new Produto("Fone Bluetooth", 150.00, eletronicos, fornecedor2));
-
-		List<Produto> produtosInformatica = new ArrayList<>();
-		produtosInformatica.add(new Produto("SSD 500GB", 450.00, informatica, fornecedor3));
-		produtosInformatica.add(new Produto("WebCam HD", 200.00, informatica, fornecedor4));
-
-		List<Produto> produtosMoveis = new ArrayList<>();
-		produtosMoveis.add(new Produto("Estante", 800.00, moveis, fornecedor1));
-		produtosMoveis.add(new Produto("Sofá 3 lugares", 1800.00, moveis, fornecedor2));
-
-// Salvando os produtos das listas de categorias
-		produtoRepository.saveAll(produtosEletronicos);
-		produtoRepository.saveAll(produtosInformatica);
-		produtoRepository.saveAll(produtosMoveis);
-
-
-
-		// Associando produtos às categorias usando setProdutos
-		// Este método cuida de estabelecer a relação bidirecional
-		eletronicos.setProdutos(produtosEletronicos);
-		informatica.setProdutos(produtosInformatica);
-		moveis.setProdutos(produtosMoveis);
-
-		// Salvando categorias com seus produtos
-		categoriaRepository.saveAll(Arrays.asList(eletronicos, informatica, moveis));
+//		List<Produto> produtosEletronicos = new ArrayList<>();
+//		produtosEletronicos.add(new Produto("Smart TV", 2500.00, eletronicos, fornecedor1));
+//		produtosEletronicos.add(new Produto("Fone Bluetooth", 150.00, eletronicos, fornecedor2));
+//
+//		List<Produto> produtosInformatica = new ArrayList<>();
+//		produtosInformatica.add(new Produto("SSD 500GB", 450.00, informatica, fornecedor3));
+//		produtosInformatica.add(new Produto("WebCam HD", 200.00, informatica, fornecedor4));
+//
+//		List<Produto> produtosMoveis = new ArrayList<>();
+//		produtosMoveis.add(new Produto("Estante", 800.00, moveis, fornecedor1));
+//		produtosMoveis.add(new Produto("Sofá 3 lugares", 1800.00, moveis, fornecedor2));
+//
+//// Salvando os produtos das listas de categorias
+//		produtoRepository.saveAll(produtosEletronicos);
+//		produtoRepository.saveAll(produtosInformatica);
+//		produtoRepository.saveAll(produtosMoveis);
+//
+//
+//
+//		// Associando produtos às categorias usando setProdutos
+//		// Este método cuida de estabelecer a relação bidirecional
+//		eletronicos.setProdutos(produtosEletronicos);
+//		informatica.setProdutos(produtosInformatica);
+//		moveis.setProdutos(produtosMoveis);
+//
+//		// Salvando categorias com seus produtos
+//		categoriaRepository.saveAll(Arrays.asList(eletronicos, informatica, moveis));
 
 		// Exemplo de consulta das associações
 		System.out.println("\n=== Listando categorias e seus produtos ===");
@@ -392,6 +397,8 @@ public class AtividadesApplication implements CommandLineRunner {
 		}
 
 		// FIM DO CÓDIGO PARA ASSOCIAÇÃO DE PRODUTOS E PEDIDOS
+
+		coletandoDados();
 	}
 
 	public static Optional<Integer> processaNumero(Optional<Integer> numero) {
@@ -410,5 +417,126 @@ public class AtividadesApplication implements CommandLineRunner {
 		return emails.stream()
 				.map(email -> email.trim().toLowerCase())
 				.collect(Collectors.toList());
+	}
+
+	public void coletandoDados() {
+		System.out.println("1 - Retornando produtos com nome exato:");
+		System.out.println(getProdutosPorNome("Notebook"));
+
+		System.out.println("\n2 - Retornando produtos de uma categoria:");
+		System.out.println(getProdutosPorCategoria(1L));
+
+		System.out.println("\n3 - Retornando produtos com preço maior que:");
+		System.out.println(getProdutosComPrecoMaiorQue(BigDecimal.valueOf(1000)));
+
+		System.out.println("\n4 - Retornando produtos com preço menor que:");
+		System.out.println(getProdutosComPrecoMenorQue(BigDecimal.valueOf(500)));
+
+		System.out.println("\n5 - Retornando produtos contendo nome específico:");
+		System.out.println(getProdutosPorNomeContendo("Smart"));
+
+		System.out.println("\n6 - Retornando pedidos sem data de entrega:");
+		System.out.println(getPedidosSemDataEntrega());
+
+		System.out.println("\n7 - Retornando pedidos com data de entrega:");
+		System.out.println(getPedidosComDataEntrega());
+
+		System.out.println("\n8 - Retornando produtos de uma categoria ordenados pelo preço crescente:");
+		System.out.println(getProdutosPorCategoriaOrdenadoPrecoAsc(1L));
+
+		System.out.println("\n9 - Retornando produtos de uma categoria ordenados pelo preço decrescente:");
+		System.out.println(getProdutosPorCategoriaOrdenadoPrecoDesc(1L));
+
+		System.out.println("\n10 - Contagem de produtos em uma categoria:");
+		System.out.println(getContagemProdutosPorCategoria(1L));
+
+		System.out.println("\n11 - Contagem de produtos com preço maior que:");
+		System.out.println(getContagemProdutosComPrecoMaiorQue(BigDecimal.valueOf(1000)));
+
+		System.out.println("\n12 - Retornando produtos com preço menor que ou nome contendo termo:");
+		System.out.println(getProdutosPrecoMenorOuNomeContendo(BigDecimal.valueOf(500), "Basic"));
+
+		System.out.println("\n13 - Retornando pedidos feitos após uma data:");
+		System.out.println(getPedidosAposData(LocalDate.of(2024, 1, 1)));
+
+		System.out.println("\n14 - Retornando pedidos feitos antes de uma data:");
+		System.out.println(getPedidosAntesData(LocalDate.of(2024, 1, 1)));
+
+		System.out.println("\n15 - Retornando pedidos feitos em um intervalo de datas:");
+		System.out.println(getPedidosEntreDatas(LocalDate.of(2024, 1, 1), LocalDate.of(2024, 12, 31)));
+
+		System.out.println("\n16 - Retornando os três produtos mais caros:");
+		System.out.println(getTop3ProdutosMaisCaros());
+
+		System.out.println("\n17 - Retornando os cinco produtos mais baratos de uma categoria:");
+		System.out.println(getTop5ProdutosMaisBaratosPorCategoria(1L));
+	}
+
+	public List<Produto> getProdutosPorNome(String nome) {
+		return produtoRepository.findByNome(nome);
+	}
+
+	public List<Produto> getProdutosPorCategoria(Long categoriaId) {
+		return produtoRepository.findByCategoriaId(categoriaId);
+	}
+
+	public List<Produto> getProdutosComPrecoMaiorQue(BigDecimal preco) {
+		return produtoRepository.findByPrecoGreaterThan(preco);
+	}
+
+	public List<Produto> getProdutosComPrecoMenorQue(BigDecimal preco) {
+		return produtoRepository.findByPrecoLessThan(preco);
+	}
+
+	public List<Produto> getProdutosPorNomeContendo(String termo) {
+		return produtoRepository.findByNomeContaining(termo);
+	}
+
+	public List<Pedido> getPedidosSemDataEntrega() {
+		return pedidoRepository.findByDataIsNull();
+	}
+
+	public List<Pedido> getPedidosComDataEntrega() {
+		return pedidoRepository.findByDataIsNotNull();
+	}
+
+	public List<Produto> getProdutosPorCategoriaOrdenadoPrecoAsc(Long categoriaId) {
+		return produtoRepository.findByCategoriaIdOrderByPrecoAsc(categoriaId);
+	}
+
+	public List<Produto> getProdutosPorCategoriaOrdenadoPrecoDesc(Long categoriaId) {
+		return produtoRepository.findByCategoriaIdOrderByPrecoDesc(categoriaId);
+	}
+
+	public long getContagemProdutosPorCategoria(Long categoriaId) {
+		return produtoRepository.countByCategoriaId(categoriaId);
+	}
+
+	public long getContagemProdutosComPrecoMaiorQue(BigDecimal preco) {
+		return produtoRepository.countByPrecoGreaterThan(preco);
+	}
+
+	public List<Produto> getProdutosPrecoMenorOuNomeContendo(BigDecimal preco, String termo) {
+		return produtoRepository.findByPrecoLessThanOrNomeContaining(preco, termo);
+	}
+
+	public List<Pedido> getPedidosAposData(LocalDate data) {
+		return pedidoRepository.findByDataAfter(data);
+	}
+
+	public List<Pedido> getPedidosAntesData(LocalDate data) {
+		return pedidoRepository.findByDataBefore(data);
+	}
+
+	public List<Pedido> getPedidosEntreDatas(LocalDate inicio, LocalDate fim) {
+		return pedidoRepository.findByDataBetween(inicio, fim);
+	}
+
+	public List<Produto> getTop3ProdutosMaisCaros() {
+		return produtoRepository.findTop3ByOrderByPrecoDesc();
+	}
+
+	public List<Produto> getTop5ProdutosMaisBaratosPorCategoria(Long categoriaId) {
+		return produtoRepository.findTop5ByCategoriaIdOrderByPrecoAsc(categoriaId);
 	}
 }

@@ -5,7 +5,9 @@ import br.com.alura.Atividades.postgres.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
-    // Interface básica sem métodos personalizados
+    Optional<Categoria> findByNome(String nome);
 }

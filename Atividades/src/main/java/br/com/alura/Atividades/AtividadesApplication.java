@@ -20,7 +20,10 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.ClientInfoStatus;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -37,6 +40,7 @@ public class AtividadesApplication implements CommandLineRunner {
 	private FornecedorRepository fornecedorRepository;
 	@Autowired
 	private CategoriaService categoriaService;
+	Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		SpringApplication.run(AtividadesApplication.class, args);
@@ -44,7 +48,6 @@ public class AtividadesApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("Digite o numero: ");
 		int num = scanner.nextInt();
@@ -470,6 +473,79 @@ public class AtividadesApplication implements CommandLineRunner {
 
 		System.out.println("\n17 - Retornando os cinco produtos mais baratos de uma categoria:");
 		System.out.println(getTop5ProdutosMaisBaratosPorCategoria(1L));
+
+		System.out.println("\n18 - Retorne os produtos com preço maior que um valor.");
+		System.out.println("Digite o valor minimo do produto: ");
+		var valorMin = scanner.nextDouble();
+		List<Produto> produtosComMaiorValor = produtoRepository.produtosComMaiorValor(valorMin);
+		produtosComMaiorValor.forEach(p -> System.out.println(p.getNome() + " - Valor: " + p.getPreco()));
+
+		System.out.println("\n19 - Retorne os produtos em ordem crescente pelo valor");
+		List<Produto> produtosCrescente = produtoRepository.produtosCrescente();
+		produtosCrescente.forEach(p -> System.out.println(p.getNome() + " - Valor: " + p.getPreco()));
+
+		System.out.println("\n20 - Retorne os produtos em ordem decrescente pelo valor");
+		List<Produto> produtosDecrescente = produtoRepository.produtosDecrescente();
+		produtosDecrescente.forEach(p -> System.out.println(p.getNome() + " - Valor: " + p.getPreco()));
+
+		System.out.println("\n21 - Retorne os produtos que comecem com uma letra");
+		System.out.println("Digite a letra inicial: ");
+		var letra = scanner.nextLine();
+		scanner.nextLine();
+		List<Produto> produtosIniciadosPorLetra = pedidoRepository.produtoIniciadosPorLetra(letra);
+		produtosIniciadosPorLetra.forEach(p -> System.out.println(p.getNome() + " - Valor: " + p.getPreco()));
+
+		System.out.println("\n22 - Retorne os pedidos feitos entre duas datas");
+		System.out.print("Digite a data de inicio (formato dd/MM/yyyy): ");
+		var dataInicio = scanner.nextLine();
+		System.out.print("Digite a data de final (formato dd/MM/yyyy): ");
+		var dataFinal = scanner.nextLine();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate dataFormatadaInicio = LocalDate.parse(dataInicio, formatter);
+		LocalDate dataFormatadaFinal = LocalDate.parse(dataFinal, formatter);
+		List<Pedido> pedidosEntreDuasDatas = pedidoRepository.pedidosEntreDatas(dataFormatadaInicio, dataFormatadaFinal);
+		pedidosEntreDuasDatas.forEach(p -> System.out.println("id: " + p.getId() + " data: " + p.getData()));
+
+		System.out.println("\n23 - Retorne a Média do valor dos produtos");
+		System.out.println(produtoRepository.calcularMedia());
+
+		System.out.println("\n24 - Retorne o produto mais caro de uma categoria");
+		System.out.println("Digite a categoria desejada: ");
+		var categoria = scanner.nextLine();
+		System.out.println(produtoRepository.precoMax(categoria));
+
+		System.out.println("\n25 - Retorne o numero de produtos em cada categoria");
+		List<Object[]> numeroCategoria = produtoRepository.contarProdutosPorCategoria();
+		for (Object[] linha : numeroCategoria) {
+			System.out.println("Categoria: " + linha[0] + " | Total de produtos: " + linha[1]);
+		}
+
+		System.out.println("\n26 - Retorne categorias com mais de 10 produtos");
+		System.out.println(categoriaRepository.categoriasComMaisProdutos());
+
+		System.out.println("\n27 - Retorne produtos buscados por nome ou categoria");
+		System.out.println("Digite o nome (ou deixe em branco): ");
+		var nomeBusca = scanner.nextLine();
+		System.out.println("Digite a categoria (ou deixe em branco): ");
+		var categoriaBusca = scanner.nextLine();
+
+// Converte string vazia para null
+		nomeBusca = nomeBusca.trim().isEmpty() ? null : nomeBusca;
+		categoriaBusca = categoriaBusca.trim().isEmpty() ? null : categoriaBusca;
+
+		List<Produto> produtosFiltrados = produtoRepository.produtosPorNomeOuCategoria(nomeBusca, categoriaBusca);
+
+		if (produtosFiltrados.isEmpty()) {
+			System.out.println("Nenhum produto encontrado com os filtros informados.");
+		} else {
+			System.out.println("Produtos encontrados:");
+			produtosFiltrados.forEach(p -> System.out.println(p.getNome() + " - Categoria: " +
+					p.getCategoria().getNome() + " - Preço: " + p.getPreco()));
+		}
+
+		System.out.println("\n28 - Retorne os produtos mais caros com busca nativa");
+		produtoRepository.buscarTop5ProdutosMaisCaros().forEach(p -> System.out.println(p.getNome() + " - Categoria: " +
+				p.getCategoria().getNome() + " - Preço: " + p.getPreco()));
 	}
 
 	public List<Produto> getProdutosPorNome(String nome) {

@@ -206,7 +206,8 @@ public class Principal {
         buscarSeriePorTitulo();
         if(serieBusca.isPresent()){
             Serie serie = serieBusca.get();
-            List<Episodio> topEpisodios = repositorio.topEpisodiosporSerie(serie);
+            Long serieId = serie.getId();
+            List<Episodio> topEpisodios = repositorio.topEpisodiosporSerie(serieId);
             topEpisodios.forEach(e -> System.out.printf("Série: %s Temporada %s - Episódio %s - %s - Avaliação %s\n",
                     e.getSerie().getTitulo(), e.getTemporada(),
                     e.getNumeroEpisodio(), e.getTitulo(), e.getAvaliacao()));

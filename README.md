@@ -51,6 +51,7 @@ Navegue até a pasta do backend correspondente e execute:
 ## Continuação dos estudos — outubro de 2026
 
 - [Catálogo da carreira e progresso por curso](./trilha-java/README.md).
+- [Certificados individuais verificados na Alura](./trilha-java/certificados.md).
 - [Referências oficiais da Alura](./referencias-oficiais/README.md): refatoração, boas práticas de API, testes automatizados, Git/GitHub e exceções.
 - Cursos práticos concluídos: variáveis e tipos; condicionais; laços; data e hora; classes, atributos e métodos; encapsulamento; herança, polimorfismo e interfaces; coleções e streams.
 - **Boas práticas de programação: melhore o código de uma API Java** concluído em outubro de 2026.

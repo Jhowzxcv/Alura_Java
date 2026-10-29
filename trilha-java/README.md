@@ -2,6 +2,8 @@
 
 Estudos em andamento. Progresso consultado em 29/10/2026. Os projetos próprios estão nas pastas 01 a 08; as referências oficiais estão em `referencias-oficiais/`.
 
+[Certificados individuais com links de verificação](./certificados.md).
+
 | Curso | Progresso |
 | --- | ---: |
 | [Pensamento computacional fundamentos da computação e lógica de programação](https://cursos.alura.com.br/course/computacao-fundamentos-computacao-pensamento-computacional) | 100% |
@@ -26,7 +28,7 @@ Estudos em andamento. Progresso consultado em 29/10/2026. Os projetos próprios 
 | [Java e refatoração melhorando códigos com boas práticas](https://cursos.alura.com.br/course/java-refatoracao-melhorando-codigos-boas-praticas) | 74% |
 | [Boas práticas de programação melhore o código de uma API Java](https://cursos.alura.com.br/course/boas-praticas-programacao-melhore-codigo-api-java) | 100% |
 | [Boas práticas de programação automatizando testes com Java](https://cursos.alura.com.br/course/boas-praticas-programacao-testes-java) | 72% |
-| [DevOps trabalhando com repositórios no GitHub](https://cursos.alura.com.br/course/devops-trabalhando-repositorios-github) | 62% |
+| [DevOps trabalhando com repositórios no GitHub](https://cursos.alura.com.br/course/devops-trabalhando-repositorios-github) | 67% |
 | [DevOps construindo e gerindo containers com o Docker](https://cursos.alura.com.br/course/devops-construindo-gerindo-containers-docker) | 0% |
 | [Checkpoint Desenvolvimento Back-End Java - Nível 1 Atividade Interativa 2 horas Checkpoint Desenvolvimento Back-End Java - Nível 1](https://cursos.alura.com.br/course/checkpoint-back-end-java-nivel-1) | Avaliação pendente |
 | [Spring Boot 3 desenvolva uma API Rest em Java](https://cursos.alura.com.br/course/spring-boot-3-desenvolva-api-rest-java) | 100% |

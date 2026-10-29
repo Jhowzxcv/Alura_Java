@@ -1,0 +1,20 @@
+[submodule "referencias-oficiais/09-refatoracao-java"]
+	path = referencias-oficiais/09-refatoracao-java
+	url = https://github.com/alura-cursos/3149-boas-praticas-java.git
+	branch = main
+[submodule "referencias-oficiais/10-boas-praticas-api-java"]
+	path = referencias-oficiais/10-boas-praticas-api-java
+	url = https://github.com/alura-cursos/3238-boas-praticas-java.git
+	branch = main
+[submodule "referencias-oficiais/11-testes-java"]
+	path = referencias-oficiais/11-testes-java
+	url = https://github.com/alura-cursos/3349-boas-praticas-java-testes.git
+	branch = main
+[submodule "referencias-oficiais/12-git-github-allbooks"]
+	path = referencias-oficiais/12-git-github-allbooks
+	url = https://github.com/alura-cursos/allbooks.git
+	branch = aula-01
+[submodule "referencias-oficiais/13-excecoes-java"]
+	path = referencias-oficiais/13-excecoes-java
+	url = https://github.com/alura-cursos/java-exceptions.git
+	branch = projeto_inicial

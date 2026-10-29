@@ -1,6 +1,6 @@
-# ☕ Formação Java & Spring Boot — Alura
+# ☕ Estudos de Java e Spring Boot — Alura
 
-Repositório central de estudos contendo todos os projetos, exercícios práticos e desafios desenvolvidos ao longo da trilha de **Java** e **Spring Boot** na **Alura**.
+Meus projetos, exercícios e referências de estudo de **Java** e **Spring Boot** na **Alura**, organizados por curso. A carreira de desenvolvimento backend Java segue em andamento.
 
 ---
 
@@ -46,3 +46,13 @@ Navegue até a pasta do backend correspondente e execute:
 ./mvnw spring-boot:run
 ```
 *(Certifique-se de configurar as credenciais do PostgreSQL no arquivo `application.properties` se aplicável)*.
+
+
+## Continuação dos estudos — outubro de 2026
+
+- [Catálogo da carreira e progresso por curso](./trilha-java/README.md).
+- [Referências oficiais da Alura](./referencias-oficiais/README.md): refatoração, boas práticas de API, testes automatizados, Git/GitHub e exceções.
+- Cursos práticos concluídos: variáveis e tipos; condicionais; laços; data e hora; classes, atributos e métodos; encapsulamento; herança, polimorfismo e interfaces; coleções e streams.
+- **Boas práticas de programação: melhore o código de uma API Java** concluído em outubro de 2026.
+
+As pastas 01 a 08 reúnem minhas implementações anteriores. As pastas 09 a 13, dentro de `referencias-oficiais`, apontam para os projetos dos instrutores por meio de submódulos Git, com origem e commit registrados. Para baixar tudo, use `git clone --recurse-submodules`.

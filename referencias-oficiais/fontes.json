@@ -1,0 +1,47 @@
+[
+  {
+    "path": "referencias-oficiais/09-refatoracao-java",
+    "repository": "https://github.com/alura-cursos/3149-boas-praticas-java",
+    "branch": "main",
+    "commit": "1b6eb32a1d20fb5febb122f6c5f8a787246dd884",
+    "course": "https://cursos.alura.com.br/course/java-refatoracao-melhorando-codigos-boas-praticas",
+    "source_activity": "https://cursos.alura.com.br/classpage/java-refatoracao-melhorando-codigos-boas-praticas/task/138295",
+    "authorship": "Alura e autores do repositório de origem"
+  },
+  {
+    "path": "referencias-oficiais/10-boas-praticas-api-java",
+    "repository": "https://github.com/alura-cursos/3238-boas-praticas-java",
+    "branch": "main",
+    "commit": "87f1adeecc78fcc4c784eed7ad63cd4b58c51045",
+    "course": "https://cursos.alura.com.br/course/boas-praticas-programacao-melhore-codigo-api-java",
+    "source_activity": "https://cursos.alura.com.br/classpage/boas-praticas-programacao-melhore-codigo-api-java/task/136532",
+    "authorship": "Alura e autores do repositório de origem"
+  },
+  {
+    "path": "referencias-oficiais/11-testes-java",
+    "repository": "https://github.com/alura-cursos/3349-boas-praticas-java-testes",
+    "branch": "main",
+    "commit": "3a8ee9d6837306a7b5d1110ed48a73a553ad5d9d",
+    "course": "https://cursos.alura.com.br/course/boas-praticas-programacao-testes-java",
+    "source_activity": "https://cursos.alura.com.br/classpage/boas-praticas-programacao-testes-java/task/139549",
+    "authorship": "Alura e autores do repositório de origem"
+  },
+  {
+    "path": "referencias-oficiais/12-git-github-allbooks",
+    "repository": "https://github.com/alura-cursos/allbooks",
+    "branch": "aula-01",
+    "commit": "f978aac2a5fdc2a519c3ba151e2e60d4d9b57e81",
+    "course": "https://cursos.alura.com.br/course/devops-trabalhando-repositorios-github",
+    "source_activity": "https://cursos.alura.com.br/classpage/devops-trabalhando-repositorios-github/task/149691",
+    "authorship": "Alura e autores do repositório de origem"
+  },
+  {
+    "path": "referencias-oficiais/13-excecoes-java",
+    "repository": "https://github.com/alura-cursos/java-exceptions",
+    "branch": "projeto_inicial",
+    "commit": "2fecbc3eb4e8e57870c2ade89982655cd47d53a8",
+    "course": "https://cursos.alura.com.br/course/java-excecoes-aprenda-criar-lancar-controlar-excecoes",
+    "source_activity": "https://cursos.alura.com.br/classpage/java-excecoes-aprenda-criar-lancar-controlar-excecoes/task/147704",
+    "authorship": "Alura e autores do repositório de origem"
+  }
+]
